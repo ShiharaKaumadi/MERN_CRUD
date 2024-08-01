@@ -35,9 +35,14 @@ app.use(express.json());// this middleware function is used to parse incoming JS
 app.use(cors());//this middleware function is use to enable cors &
 // it allows our server to accept requests from different origins.
 
-app.get("/",(req,res)=>{
+/*app.get("/",(req,res)=>{
     res.send("Hello Client");
-})
+})*/
+
+mongoose
+    .connect(process.env.MONGO_URI)
+    .then(()=>console.log('MongoDB Connected'))//connection is successful
+    .catch((err)=>console.log(err));//connection problem
 
 app.listen(PORT, ()=> console.log(`Listening at Port ${PORT}`));//start the server and
 // listening incoming requests on the specified PORT
