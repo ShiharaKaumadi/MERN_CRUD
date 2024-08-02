@@ -17,6 +17,9 @@ require("dotenv").config();//loads environment variables from '.env' file to 'pr
 //.env manages environment variables
 //by calling .config() the variables defined in dotenv file can be accessible from process.env file.
 
+const routes = require("./routes/TaskRoute");// imports TaskRoutes from routes,
+// router object that contains routes definition for handling HTTP requests
+
 const cors = require("cors");//imports CORS module and assign it to cors variable.
 //CORS ====> Cross Origin Resource Sharing
 //'cors' middleware allows to enable CORS in various options by making it possible for server to handle the request from various domains (origins).
@@ -43,6 +46,8 @@ mongoose
     .connect(process.env.MONGO_URI)
     .then(()=>console.log('MongoDB Connected'))//connection is successful
     .catch((err)=>console.log(err));//connection problem
+
+app.use("/api",routes);//mounts the routes middleware at '/api' path. All requests to paths start with '/api' will be handled by this router
 
 app.listen(PORT, ()=> console.log(`Listening at Port ${PORT}`));//start the server and
 // listening incoming requests on the specified PORT

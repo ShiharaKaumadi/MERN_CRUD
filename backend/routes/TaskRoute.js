@@ -1,4 +1,7 @@
 //1--->basic express router for handling HTTP GET request at '/get' endpoint
+
+const {getTasks} = require("../controllers/TaskControllers"); //import getTasks from TaskControllers
+
 //extract Router from Express
 const {Router} = require("express");//import Router class from Express Library
 const router = Router();//creates an instance of Router class
