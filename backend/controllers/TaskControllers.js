@@ -39,7 +39,7 @@ module.exports.updateTask = (req,res)=>{
 module.exports.deleteTask = (req,res)=>{
     const {id} = req.params;//extracting id from URL to uniquely identify the task to be deleted
 
-    TaskModel.findByIdAndDelete(id,{task})
+    TaskModel.findByIdAndDelete(id)
         .then((data) => {
             console.log("Deleted Successfully!");
             res.send("Deleted");
